@@ -337,25 +337,86 @@ function App() {
         )}
 
         {wallet && !error && (
-          <div style={{
-            marginTop: '1.5rem', background: 'rgba(255,255,255,0.03)',
-            border: '1px solid rgba(168,85,247,0.2)', borderRadius: '12px', padding: '20px'
-          }}>
-            <p style={{ color: '#9ca3af', fontSize: '12px', margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              {tx.walletData}
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ color: '#9ca3af', fontSize: '14px' }}>{tx.balance}</span>
-                <span style={{ fontWeight: 600, color: '#a855f7' }}>{wallet.hskBalance} HSK</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ color: '#9ca3af', fontSize: '14px' }}>{tx.txCount}</span>
-                <span style={{ fontWeight: 600, color: '#e2e8f0' }}>{wallet.txCount}</span>
-              </div>
+  <div style={{
+    marginTop: '1.5rem', background: 'rgba(255,255,255,0.03)',
+    border: '1px solid rgba(168,85,247,0.2)', borderRadius: '12px', padding: '20px'
+  }}>
+    <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 14px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+      {tx.walletData}
+    </p>
+
+    {/* Stats Grid */}
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '16px' }}>
+      <div style={{ background: 'rgba(168,85,247,0.08)', borderRadius: '10px', padding: '12px' }}>
+        <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 4px' }}>{tx.balance}</p>
+        <p style={{ color: '#a855f7', fontWeight: 700, fontSize: '16px', margin: 0 }}>{wallet.hskBalance} HSK</p>
+      </div>
+      <div style={{ background: 'rgba(168,85,247,0.08)', borderRadius: '10px', padding: '12px' }}>
+        <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 4px' }}>{tx.txCount}</p>
+        <p style={{ color: '#e2e8f0', fontWeight: 700, fontSize: '16px', margin: 0 }}>{wallet.txCount}</p>
+      </div>
+      <div style={{ background: 'rgba(168,85,247,0.08)', borderRadius: '10px', padding: '12px' }}>
+        <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 4px' }}>Unique Contracts</p>
+        <p style={{ color: '#e2e8f0', fontWeight: 700, fontSize: '16px', margin: 0 }}>{wallet.uniqueContracts}</p>
+      </div>
+      <div style={{ background: 'rgba(168,85,247,0.08)', borderRadius: '10px', padding: '12px' }}>
+        <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 4px' }}>Total Moved</p>
+        <p style={{ color: '#e2e8f0', fontWeight: 700, fontSize: '16px', margin: 0 }}>{wallet.totalValueMoved} HSK</p>
+      </div>
+    </div>
+
+    {/* Tokens */}
+    {wallet.tokens.length > 0 && (
+      <div style={{ marginBottom: '16px' }}>
+        <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+          Tokens ({wallet.tokens.length})
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          {wallet.tokens.slice(0, 5).map((token, i) => (
+            <div key={i} style={{
+              display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+              padding: '8px 12px', background: 'rgba(0,0,0,0.2)', borderRadius: '8px'
+            }}>
+              <span style={{ color: '#e2e8f0', fontSize: '13px', fontWeight: 500 }}>{token.symbol}</span>
+              <span style={{ color: '#9ca3af', fontSize: '13px' }}>{token.balance}</span>
             </div>
-          </div>
-        )}
+          ))}
+        </div>
+      </div>
+    )}
+
+    {/* Recent Transactions */}
+    {wallet.recentTxs.length > 0 && (
+      <div>
+        <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+          Recent Transactions ({wallet.recentTxs.length})
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          {wallet.recentTxs.slice(0, 5).map((tx, i) => (
+            <div key={i} style={{
+              display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+              padding: '8px 12px', background: 'rgba(0,0,0,0.2)', borderRadius: '8px'
+            }}>
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                <span style={{
+                  fontSize: '11px', padding: '2px 8px', borderRadius: '999px',
+                  background: tx.status === 'ok' ? 'rgba(74,222,128,0.1)' : 'rgba(239,68,68,0.1)',
+                  color: tx.status === 'ok' ? '#4ade80' : '#ef4444'
+                }}>
+                  {tx.status === 'ok' ? '✓' : '✗'}
+                </span>
+                <span style={{ color: '#e2e8f0', fontSize: '12px' }}>
+                  {tx.method?.slice(0, 20) ?? 'transfer'}
+                </span>
+              </div>
+              <span style={{ color: '#9ca3af', fontSize: '12px' }}>{tx.value} HSK</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+)}
 
         {analysis && (
           <div style={{
@@ -389,7 +450,36 @@ function App() {
             }}>
               {analysis.explanation}
             </p>
-
+            {/* Risk Factors */}
+{analysis.risk_factors && (
+  <div style={{ marginBottom: '16px' }}>
+    <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+      Risk Breakdown
+    </p>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      {[
+        { label: 'Concentration', value: analysis.risk_factors.concentration },
+        { label: 'Activity', value: analysis.risk_factors.activity },
+        { label: 'Exposure', value: analysis.risk_factors.exposure },
+      ].map((factor) => (
+        <div key={factor.label}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
+            <span style={{ color: '#9ca3af', fontSize: '12px' }}>{factor.label}</span>
+            <span style={{ color: '#e2e8f0', fontSize: '12px', fontWeight: 500 }}>{factor.value}/100</span>
+          </div>
+          <div style={{ height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '999px', overflow: 'hidden' }}>
+            <div style={{
+              height: '100%', borderRadius: '999px',
+              width: `${factor.value}%`,
+              background: factor.value > 70 ? '#ef4444' : factor.value > 40 ? '#facc15' : '#4ade80',
+              transition: 'width 0.8s ease'
+            }} />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
             <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               {tx.recommendations}
             </p>
