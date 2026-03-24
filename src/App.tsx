@@ -171,6 +171,7 @@ function App() {
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           fontWeight: 700,
+          lineHeight: '1.3'
         }}>
           DeFi Compass
         </h1>
@@ -425,9 +426,40 @@ function App() {
         )}
       </div>
 
-      <p style={{ color: '#374151', fontSize: '12px', marginTop: '3rem' }}>
-        {tx.footer}
-      </p>
+      <div style={{ marginTop: '3rem', textAlign: 'center' }}>
+  <p style={{ color: '#555', fontSize: '12px', marginBottom: '1rem' }}>
+    {tx.footer}
+  </p>
+  <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', alignItems: 'center' }}>
+    <a href="https://x.com/DeFiCompassHSK" target="_blank" rel="noopener noreferrer"
+      style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '13px' }}
+      onMouseEnter={e => e.currentTarget.style.color = '#a855f7'}
+      onMouseLeave={e => e.currentTarget.style.color = '#9ca3af'}>
+      X (Twitter)
+    </a>
+    <span style={{ color: '#333' }}>·</span>
+    <a href="https://t.me/defi_compass_alert_bot" target="_blank" rel="noopener noreferrer"
+      style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '13px' }}
+      onMouseEnter={e => e.currentTarget.style.color = '#a855f7'}
+      onMouseLeave={e => e.currentTarget.style.color = '#9ca3af'}>
+      Telegram
+    </a>
+    <span style={{ color: '#333' }}>·</span>
+    <a href="https://github.com/muhamedag2022/defi-compass" target="_blank" rel="noopener noreferrer"
+      style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '13px' }}
+      onMouseEnter={e => e.currentTarget.style.color = '#a855f7'}
+      onMouseLeave={e => e.currentTarget.style.color = '#9ca3af'}>
+      GitHub
+    </a>
+    <span style={{ color: '#333' }}>·</span>
+    <a href="https://www.youtube.com/@mohamedasanhaji1334" target="_blank" rel="noopener noreferrer"
+      style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '13px' }}
+      onMouseEnter={e => e.currentTarget.style.color = '#a855f7'}
+      onMouseLeave={e => e.currentTarget.style.color = '#9ca3af'}>
+      Tutorial
+    </a>
+  </div>
+</div>
     </div>
   )
 }
