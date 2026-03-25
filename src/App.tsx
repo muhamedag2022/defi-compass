@@ -7,6 +7,7 @@ import { analyzeWallet } from './api/ai'
 import type { RiskAnalysis } from './api/ai'
 import { sendTelegramAlert } from './api/telegram'
 import Logo from './components/Logo'
+import WalletCharts from './components/WalletCharts'
 
 const wallets = [
   { name: 'OKX Wallet', icon: '🟡' },
@@ -415,6 +416,7 @@ function App() {
         </div>
       </div>
     )}
+    {wallet && <WalletCharts wallet={wallet} />}
   </div>
 )}
 
@@ -546,7 +548,7 @@ function App() {
       style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '13px' }}
       onMouseEnter={e => e.currentTarget.style.color = '#a855f7'}
       onMouseLeave={e => e.currentTarget.style.color = '#9ca3af'}>
-      Tutorial
+      Demo Video
     </a>
   </div>
 </div>
