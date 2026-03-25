@@ -4,7 +4,9 @@
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-7c3aed?style=for-the-badge)](https://defi-compass.vercel.app)
 [![HashKey Chain](https://img.shields.io/badge/HashKey-Chain-a855f7?style=for-the-badge)](https://hashkey.blockscout.com)
-[![Built with Claude](https://img.shields.io/badge/AI-DGrid%20Gateway-blue?style=for-the-badge)](https://dgrid.ai)
+[![AI by DGrid](https://img.shields.io/badge/AI-DGrid%20Gateway-blue?style=for-the-badge)](https://dgrid.ai)
+[![Twitter](https://img.shields.io/badge/Twitter-DeFiCompassHSK-1DA1F2?style=for-the-badge)](https://x.com/DeFiCompassHSK)
+[![Telegram](https://img.shields.io/badge/Telegram-Bot-26A5E4?style=for-the-badge)](https://t.me/defi_compass_alert_bot)
 
 ---
 
@@ -18,7 +20,7 @@ DeFi users on HashKey Chain face invisible risks every day:
 
 ## 💡 The Solution
 
-DeFi Compass is an AI-powered wallet risk analyzer built on HashKey Chain. It reads on-chain data, analyzes it using AI, and delivers clear risk scores with actionable recommendations — in seconds, in English and Chinese.
+DeFi Compass is an AI-powered wallet risk analyzer built on HashKey Chain. It reads deep on-chain data, analyzes it using Claude AI via DGrid Gateway, and delivers clear risk scores with actionable recommendations — in seconds, in English and Chinese.
 
 ---
 
@@ -26,28 +28,36 @@ DeFi Compass is an AI-powered wallet risk analyzer built on HashKey Chain. It re
 
 | Feature | Description |
 |---|---|
-| 🔍 **Wallet Scanner** | Reads real on-chain data from HashKey Chain mainnet |
-| 🤖 **AI Risk Analysis** | Claude AI via DGrid Gateway generates risk score 0-100 |
-| 📊 **Risk Report** | Clear explanation + actionable recommendations |
-| 📱 **Telegram Alerts** | Instant notification when high risk is detected |
+| 🔍 **Deep Wallet Scanner** | Balance, transactions, tokens, unique contracts, total value moved |
+| 🤖 **AI Risk Analysis** | Claude AI via DGrid Gateway — Risk Score 0-100 with 6 risk factors |
+| 📊 **Risk Breakdown** | Concentration, Activity, Exposure bars with dynamic colors |
+| 📈 **Visual Charts** | Portfolio distribution pie chart + transaction activity bar chart |
+| 📱 **Telegram Alerts** | Personal alerts — each user sets their own chat ID |
 | 🌐 **Bilingual** | Full English + Chinese (中文) support |
 | 🔗 **Multi-wallet** | OKX Wallet, MetaMask, TokenPocket, ImToken |
+| 🔓 **No login required** | Scan any public address instantly |
 
 ---
 
 ## 🏗 Architecture
 ```
-User Wallet
+User Wallet / Any Public Address
     ↓
-HashKey Chain (Chain ID: 177)
-    ↓ viem + wagmi
-On-chain Data (Balance, Tx Count)
+HashKey Chain Mainnet (Chain ID: 177)
+    ↓ viem + wagmi + Blockscout API
+Deep On-chain Data:
+  • HSK Balance
+  • Transaction count + history
+  • ERC-20 token holdings
+  • Unique contracts interacted
+  • Total value moved
     ↓
-DGrid AI Gateway (Claude AI)
+Claude AI via DGrid AI Gateway
+  • 6-factor risk analysis
+  • Risk Score 0-100
+  • Actionable recommendations
     ↓
-Risk Score + Recommendations
-    ↓
-Telegram Alert (if High Risk)
+Visual Dashboard + Telegram Alert (if High Risk)
 ```
 
 ---
@@ -56,20 +66,21 @@ Telegram Alert (if High Risk)
 
 | Partner | Role |
 |---|---|
-| **HashKey Chain** | L2 blockchain infrastructure |
-| **DGrid AI** (@dgrid_ai) | AI Gateway — 200+ models via single API |
-| **ZKGate** | ZK identity proofs (integration ready) |
+| **HashKey Chain** | L2 blockchain infrastructure (Chain ID: 177) |
+| **DGrid AI** (@dgrid_ai) | AI Gateway — 200+ models including Claude via single API |
 | **Asseto Finance** (@AssetoFinance) | RWA assets for investment recommendations |
+| **ZKGate** | ZK identity proofs — planned roadmap integration |
 
 ---
 
 ## 🛠 Tech Stack
 ```
-Frontend:   React 18 + TypeScript + Vite
-Blockchain: wagmi + viem (HashKey Chain mainnet)
-AI:         DGrid AI Gateway (Claude AI)
-Alerts:     Telegram Bot API
-Deploy:     Vercel
+Frontend:    React 18 + TypeScript + Vite + Recharts
+Blockchain:  wagmi + viem (HashKey Chain mainnet)
+Explorer:    HashKey Blockscout API (tokens, transactions)
+AI:          DGrid AI Gateway → Claude AI (anthropic/claude-3.5-sonnet)
+Alerts:      Telegram Bot API (personal chat ID per user)
+Deploy:      Vercel
 ```
 
 ---
@@ -78,7 +89,7 @@ Deploy:     Vercel
 
 ### Prerequisites
 - Node.js 18+
-- MetaMask or OKX Wallet
+- OKX Wallet, MetaMask, TokenPocket, or ImToken
 
 ### Installation
 ```bash
@@ -106,16 +117,39 @@ Open `http://localhost:5173`
 
 ## 📹 Demo
 
-🔗 **Live:** https://defi-compass.vercel.app
+🔗 **Live App:** https://defi-compass.vercel.app
+
+🎥 **Demo Video:** https://www.youtube.com/@mohamedasanhaji1334
 
 ---
 
 ## 🎯 Hackathon Tracks
 
-- ✅ **AI** — Claude AI via DGrid Gateway for risk analysis
-- ✅ **DeFi** — On-chain wallet risk monitoring on HashKey Chain
+- ✅ **AI** — Claude AI via DGrid Gateway for deep risk analysis
+- ✅ **DeFi** — Real on-chain wallet risk monitoring on HashKey Chain mainnet
 - ✅ **PayFi** — Foundation for automated payment risk assessment
-- ✅ **ZKID** — ZKGate SDK integration ready for private identity
+- 🔜 **ZKID** — ZKGate private identity integration (roadmap)
+
+---
+
+## 🗺 Roadmap
+
+- [ ] ZKGate integration — prove KYC/compliance without revealing identity
+- [ ] Asseto Finance RWA panel — real asset investment recommendations
+- [ ] Multi-address portfolio view
+- [ ] Historical risk score tracking
+- [ ] Echo Protocol integration for safe automated actions
+
+---
+
+## 🌐 Community
+
+| Platform | Link |
+|---|---|
+| Twitter/X | [@DeFiCompassHSK](https://x.com/DeFiCompassHSK) |
+| Telegram Bot | [@defi_compass_alert_bot](https://t.me/defi_compass_alert_bot) |
+| GitHub | [muhamedag2022/defi-compass](https://github.com/muhamedag2022/defi-compass) |
+| YouTube | [@mohamedasanhaji1334](https://www.youtube.com/@mohamedasanhaji1334) |
 
 ---
 
@@ -126,5 +160,5 @@ MIT License — feel free to build on top of this project.
 ---
 
 <div align="center">
-  <strong>Powered by HashKey Chain · AI by DGrid</strong>
+  <strong>Powered by HashKey Chain · AI by DGrid · Built for HashKey Chain Horizon Hackathon 2026</strong>
 </div>
