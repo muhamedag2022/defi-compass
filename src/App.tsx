@@ -8,6 +8,8 @@ import type { RiskAnalysis } from './api/ai'
 import { sendTelegramAlert } from './api/telegram'
 import Logo from './components/Logo'
 import WalletCharts from './components/WalletCharts'
+import { verifyWithNexaID } from './api/nexaid'
+import type { NexaIDAttestation, VerificationStatus } from './api/nexaid'
 
 const wallets = [
   { name: 'OKX Wallet', icon: '🟡' },
@@ -88,7 +90,10 @@ function App() {
   const [chatId, setChatId] = useState<string>(localStorage.getItem('telegram_chat_id') ?? '')
   const [chatIdInput, setChatIdInput] = useState('')
   const [showAlertSetup, setShowAlertSetup] = useState(false)
+  const [nexaStatus, setNexaStatus] = useState<VerificationStatus>('idle')
+  const [nexaAttestation, setNexaAttestation] = useState<NexaIDAttestation | null>(null)
   const [lang, setLang] = useState<'en' | 'zh'>('en')
+  
 
   const tx = t[lang]
 
@@ -116,6 +121,18 @@ function App() {
     setStep('idle')
     setLoading(false)
   }
+  const handleNexaVerify = async () => {
+  const addr = address || scanAddress
+  if (!addr) return
+  setNexaStatus('pending')
+  try {
+    const attestation = await verifyWithNexaID(addr)
+    setNexaAttestation(attestation)
+    setNexaStatus('verified')
+  } catch {
+    setNexaStatus('failed')
+  }
+}
 
   return (
     <div style={{
@@ -262,7 +279,115 @@ function App() {
           }}>
           {loading ? (step === 'scanning' ? tx.fetching : tx.analyzing) : tx.scan}
         </button>
+        {/* NexaID Verification */}
+<div style={{ marginTop: '1rem' }}>
+  {nexaStatus === 'idle' && (
+    <button
+      onClick={handleNexaVerify}
+      disabled={!address && !scanAddress}
+      style={{
+        width: '100%', padding: '12px',
+        background: 'rgba(16,185,129,0.08)',
+        border: '1px solid rgba(16,185,129,0.3)',
+        borderRadius: '12px', color: '#10b981',
+        fontSize: '13px', cursor: 'pointer',
+        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px'
+      }}>
+      <span style={{ fontSize: '16px' }}>🔐</span>
+      Verify Identity with NexaID (ZKID)
+    </button>
+  )}
 
+  {nexaStatus === 'pending' && (
+    <div style={{
+      padding: '12px', background: 'rgba(16,185,129,0.05)',
+      border: '1px solid rgba(16,185,129,0.2)', borderRadius: '12px',
+      textAlign: 'center'
+    }}>
+      <p style={{ color: '#10b981', fontSize: '13px', margin: 0 }}>
+        Generating ZK proof... please wait
+      </p>
+    </div>
+  )}
+
+  {nexaStatus === 'verified' && nexaAttestation && (
+    <div style={{
+      padding: '14px', background: 'rgba(16,185,129,0.05)',
+      border: '1px solid rgba(16,185,129,0.3)', borderRadius: '12px'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+        <span style={{ fontSize: '16px' }}>✅</span>
+        <span style={{ color: '#10b981', fontSize: '13px', fontWeight: 600 }}>
+          Identity Verified via NexaID
+        </span>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        {[
+          { label: 'Human verification', value: nexaAttestation.claims.isHuman },
+          { label: 'Age verified (18+)', value: nexaAttestation.claims.ageVerified },
+          { label: 'Not blacklisted', value: nexaAttestation.claims.notBlacklisted },
+        ].map((claim) => (
+          <div key={claim.label} style={{
+            display: 'flex', justifyContent: 'space-between',
+            padding: '6px 10px', background: 'rgba(0,0,0,0.2)', borderRadius: '8px'
+          }}>
+            <span style={{ color: '#9ca3af', fontSize: '12px' }}>{claim.label}</span>
+            <span style={{ color: claim.value ? '#10b981' : '#ef4444', fontSize: '12px' }}>
+              {claim.value ? '✓ Passed' : '✗ Failed'}
+            </span>
+          </div>
+        ))}
+        <div style={{
+          display: 'flex', justifyContent: 'space-between',
+          padding: '6px 10px', background: 'rgba(0,0,0,0.2)', borderRadius: '8px'
+        }}>
+          <span style={{ color: '#9ca3af', fontSize: '12px' }}>Jurisdiction</span>
+          <span style={{ color: '#10b981', fontSize: '12px' }}>
+            {nexaAttestation.claims.jurisdiction}
+          </span>
+        </div>
+        <div style={{
+          marginTop: '4px', padding: '6px 10px',
+          background: 'rgba(0,0,0,0.2)', borderRadius: '8px'
+        }}>
+          <span style={{ color: '#9ca3af', fontSize: '11px' }}>ZK Proof: </span>
+          <span style={{ color: '#6b7280', fontSize: '11px', fontFamily: 'monospace' }}>
+            {nexaAttestation.proof.slice(0, 20)}...
+          </span>
+        </div>
+      </div>
+      <button
+        onClick={() => { setNexaStatus('idle'); setNexaAttestation(null) }}
+        style={{
+          marginTop: '10px', width: '100%', background: 'transparent',
+          color: '#6b7280', border: '1px solid rgba(255,255,255,0.1)',
+          borderRadius: '8px', padding: '6px', fontSize: '12px', cursor: 'pointer'
+        }}>
+        Reset verification
+      </button>
+    </div>
+  )}
+
+  {nexaStatus === 'failed' && (
+    <div style={{
+      padding: '12px', background: 'rgba(239,68,68,0.05)',
+      border: '1px solid rgba(239,68,68,0.3)', borderRadius: '12px',
+      textAlign: 'center'
+    }}>
+      <p style={{ color: '#ef4444', fontSize: '13px', margin: '0 0 8px' }}>
+        Verification failed. Please try again.
+      </p>
+      <button onClick={() => setNexaStatus('idle')}
+        style={{
+          background: 'transparent', color: '#ef4444',
+          border: '1px solid rgba(239,68,68,0.3)', borderRadius: '8px',
+          padding: '6px 16px', fontSize: '12px', cursor: 'pointer'
+        }}>
+        Retry
+      </button>
+    </div>
+  )}
+</div>
         {/* Telegram Setup */}
         <div style={{ marginTop: '1rem' }}>
           {!chatId ? (

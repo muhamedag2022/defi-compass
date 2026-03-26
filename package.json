@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.80.0",
+    "@nexaid/network-js-sdk": "^0.0.19",
     "@tanstack/react-query": "^5.94.5",
     "axios": "^1.13.6",
     "openai": "^6.32.0",
