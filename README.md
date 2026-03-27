@@ -1,6 +1,6 @@
 # 🧭 DeFi Compass
 
-> Your AI-powered risk advisor on HashKey Chain | 基于HashKey Chain的AI风险顾问
+> AI Risk Guardian for Autonomous DeFi & PayFi on HashKey Chain | 基于HashKey Chain的AI自主风险守护者
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-7c3aed?style=for-the-badge)](https://defi-compass.vercel.app)
 [![HashKey Chain](https://img.shields.io/badge/HashKey-Chain-a855f7?style=for-the-badge)](https://hashkey.blockscout.com)
@@ -22,10 +22,29 @@ DeFi users on HashKey Chain face invisible risks every day:
 
 ## 💡 The Solution
 
-DeFi Compass is a full-stack AI-powered DeFi risk management platform built natively on HashKey Chain. It reads deep on-chain data, runs a **3-step AI agent analysis**, simulates future risk scenarios, and executes protective settlements via **HSP MultiPay** — all secured by **NexaID ZK identity verification**.
+DeFi Compass is an **AI-powered autonomous risk guardian** built natively on HashKey Chain. 
+It acts as the risk assessment layer **before** autonomous payments execute — analyzing wallets 
+in real-time, detecting anomalies, simulating future scenarios, and triggering protective 
+settlements via HSP MultiPay when risk exceeds safe thresholds.
+
+Think of it as the **AI brain** that protects users from losses before an autonomous payment 
+agent executes a transaction they shouldn't.
 
 ---
+## ⚠️ Integration Status
 
+| Integration | Status | Notes |
+|---|---|---|
+| **HashKey Chain** | ✅ Live (mainnet) | Chain ID 177, real on-chain data |
+| **DGrid AI Gateway** | ✅ Live | Claude via decentralized AI API |
+| **NexaID ZKID** | 🔧 SDK Ready | Developer hub temporarily down (affects all hackathon participants — confirmed on DoraHacks forum). Architecture is production-ready, awaiting hub restoration. |
+| **HSP MultiPay** | 🔧 Demo Flow | Production-ready payload architecture. Awaiting HSP sandbox credentials. Full settlement logic implemented. |
+| **Telegram Alerts** | ✅ Live | Real-time personal alerts |
+
+> NexaID and HSP are in demo mode due to infrastructure availability, not implementation gaps.
+> The integration architecture is production-ready and will be live once credentials are available.
+
+---
 ## ✨ Features
 
 | Feature | Description | Track |
@@ -210,10 +229,10 @@ Open `http://localhost:5173`
 
 ## 🎯 Hackathon Tracks
 
-- ✅ **AI** — Multi-step Claude AI agent: portfolio analysis + anomaly detection + risk report + What-If simulation
-- ✅ **DeFi** — Real on-chain data from HashKey Chain mainnet via Blockscout API
-- ✅ **PayFi** — HSP MultiPay integration: AI-generated settlement plan executed via HashKey Settlement Protocol
-- ✅ **ZKID** — NexaID integration: ZK identity proofs (human, age, blacklist, jurisdiction) via zkTLS
+- ✅ **AI** ← Primary track — Multi-step AI agent: portfolio analysis + anomaly detection + risk simulation + autonomous decision making
+- ✅ **DeFi** — Real on-chain data from HashKey Chain mainnet via Blockscout API  
+- ✅ **PayFi** — HSP MultiPay architecture: AI-triggered settlement when risk > threshold (demo flow, production-ready)
+- ✅ **ZKID** — NexaID zkTLS integration: ZK proofs for compliance-gated settlements (SDK ready, hub pending)
 
 ---
 
