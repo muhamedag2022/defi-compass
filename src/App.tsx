@@ -10,6 +10,7 @@ import Logo from './components/Logo'
 import WalletCharts from './components/WalletCharts'
 import { verifyWithNexaID } from './api/nexaid'
 import type { NexaIDAttestation, VerificationStatus } from './api/nexaid'
+import HSPSettlement from './components/HSPSettlement'
 
 const wallets = [
   { name: 'OKX Wallet', icon: '🟡' },
@@ -639,6 +640,14 @@ function App() {
                 ⚠ {tx.urgent}
               </div>
             )}
+            {/* HSP Settlement */}
+{wallet && analysis && (
+  <HSPSettlement
+    wallet={wallet}
+    analysis={analysis}
+    nexaVerified={nexaStatus === 'verified'}
+  />
+)}
           </div>
         )}
       </div>
