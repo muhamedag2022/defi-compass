@@ -186,22 +186,45 @@ function App() {
       </div>
 
       {/* Title */}
-      <div style={{ textAlign: 'center', marginBottom: '2.5rem', position: 'relative' }}>
-        <div style={{ marginBottom: '1.2rem' }}>
-          <Logo />
-        </div>
-        <h1 style={{
-          fontSize: '2.2rem', margin: '0 0 0.4rem',
-          background: 'linear-gradient(90deg, #a855f7, #7c3aed)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          fontWeight: 700,
-          lineHeight: '1.3'
-        }}>
-          DeFi Compass
-        </h1>
-        <p style={{ color: '#9ca3af', margin: '0.5rem 0 0', fontSize: '14px' }}>{tx.subtitle}</p>
+<div style={{ textAlign: 'center', marginBottom: '2rem', position: 'relative' }}>
+  <div style={{ marginBottom: '1.2rem' }}>
+    <Logo />
+  </div>
+  <h1 style={{
+    fontSize: '2.2rem', margin: '0 0 0.4rem',
+    background: 'linear-gradient(90deg, #a855f7, #7c3aed)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    fontWeight: 700,
+    lineHeight: '1.3'
+  }}>
+    DeFi Compass
+  </h1>
+  <p style={{ color: '#9ca3af', margin: '0.5rem 0 0', fontSize: '14px' }}>{tx.subtitle}</p>
+
+  {/* Value propositions */}
+  <div style={{
+    display: 'flex', flexDirection: 'column', gap: '8px',
+    marginTop: '1.5rem', maxWidth: '420px', margin: '1.5rem auto 0'
+  }}>
+    {[
+      { icon: '🔍', text: lang === 'en' ? 'Know if your wallet is at risk — before you lose money' : '在亏损之前了解您的钱包是否有风险' },
+      { icon: '⚠️', text: lang === 'en' ? 'Get alerted instantly when suspicious activity is detected' : '检测到可疑活动时立即收到警报' },
+      { icon: '💳', text: lang === 'en' ? 'One click to protect your assets via HSP settlement' : '一键通过HSP结算保护您的资产' },
+      { icon: '🔮', text: lang === 'en' ? 'See what happens to your portfolio before market moves' : '在市场波动前预测您的投资组合' },
+    ].map((item, i) => (
+      <div key={i} style={{
+        display: 'flex', alignItems: 'center', gap: '10px',
+        padding: '8px 14px', background: 'rgba(255,255,255,0.03)',
+        border: '1px solid rgba(168,85,247,0.15)', borderRadius: '10px',
+        textAlign: 'left'
+      }}>
+        <span style={{ fontSize: '16px', flexShrink: 0 }}>{item.icon}</span>
+        <span style={{ color: '#d1d5db', fontSize: '13px', lineHeight: 1.4 }}>{item.text}</span>
       </div>
+    ))}
+  </div>
+</div>
 
       <div style={{ width: '100%', maxWidth: '440px', position: 'relative' }}>
 
@@ -338,6 +361,13 @@ function App() {
 )}
         {/* NexaID Verification */}
 <div style={{ marginTop: '1rem' }}>
+  {nexaStatus === 'idle' && (
+  <p style={{ color: '#6b7280', fontSize: '11px', margin: '0 0 8px', lineHeight: 1.5 }}>
+    {lang === 'en'
+      ? '🔐 Verify once to unlock HSP settlements — your identity stays private via ZK proofs'
+      : '🔐 一次验证即可解锁HSP结算 — 通过ZK证明保护您的身份隐私'}
+  </p>
+)}
   {nexaStatus === 'idle' && (
     <button
       onClick={handleNexaVerify}
@@ -524,9 +554,16 @@ function App() {
     marginTop: '1.5rem', background: 'rgba(255,255,255,0.03)',
     border: '1px solid rgba(168,85,247,0.2)', borderRadius: '12px', padding: '20px'
   }}>
-    <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 14px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-      {tx.walletData}
-    </p>
+    <div style={{ marginBottom: '14px' }}>
+  <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 4px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+    {tx.walletData}
+  </p>
+  <p style={{ color: '#6b7280', fontSize: '11px', margin: 0 }}>
+    {lang === 'en'
+      ? 'Real-time data pulled directly from HashKey Chain mainnet'
+      : '直接从HashKey Chain主网实时提取的数据'}
+  </p>
+</div>
 
     {/* Stats Grid */}
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '16px' }}>
