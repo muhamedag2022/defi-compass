@@ -85,6 +85,8 @@ function App() {
   const [scanAddress, setScanAddress] = useState('')
   const [loading, setLoading] = useState(false)
   const [step, setStep] = useState<'idle' | 'scanning' | 'analyzing'>('idle')
+  const [agentStep, setAgentStep] = useState(0)
+  const [agentLabel, setAgentLabel] = useState('')
   const [wallet, setWallet] = useState<WalletData | null>(null)
   const [analysis, setAnalysis] = useState<RiskAnalysis | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -114,7 +116,10 @@ function App() {
     }
     setWallet(data)
     setStep('analyzing')
-    const result = await analyzeWallet(data)
+    const result = await analyzeWallet(data, (step, label) => {
+    setAgentStep(step)
+    setAgentLabel(label)
+           })
     setAnalysis(result)
     if ((result.urgent_alert || result.risk_level === 'High') && chatId) {
       await sendTelegramAlert(addr, result.risk_score, result.risk_level, result.explanation, chatId)
@@ -249,7 +254,11 @@ function App() {
                 color: '#fff', border: 'none', borderRadius: '10px',
                 padding: '12px', fontSize: '15px', cursor: 'pointer', marginBottom: '8px'
               }}>
-              {loading ? (step === 'scanning' ? tx.fetching : tx.analyzing) : tx.scanMy}
+              {loading
+  ? step === 'scanning'
+    ? tx.fetching
+    : agentLabel || tx.analyzing
+  : tx.scanMy}
             </button>
             <button onClick={() => disconnect()}
               style={{
@@ -278,8 +287,54 @@ function App() {
             border: 'none', borderRadius: '12px',
             padding: '13px', fontSize: '15px', cursor: 'pointer', fontWeight: 500
           }}>
-          {loading ? (step === 'scanning' ? tx.fetching : tx.analyzing) : tx.scan}
+          {loading
+  ? step === 'scanning'
+    ? tx.fetching
+    : agentLabel || tx.analyzing
+  : tx.scan}
         </button>
+        {/* AI Agent Steps */}
+{loading && step === 'analyzing' && (
+  <div style={{
+    marginTop: '10px', padding: '12px',
+    background: 'rgba(168,85,247,0.05)',
+    border: '1px solid rgba(168,85,247,0.2)',
+    borderRadius: '10px'
+  }}>
+    <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+      AI Agent — Multi-step Analysis
+    </p>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+      {[
+        { num: 1, label: 'Portfolio composition analysis' },
+        { num: 2, label: 'Anomaly & pattern detection' },
+        { num: 3, label: 'Final risk report generation' },
+      ].map((s) => (
+        <div key={s.num} style={{
+          display: 'flex', alignItems: 'center', gap: '8px',
+          padding: '6px 10px', borderRadius: '8px',
+          background: agentStep >= s.num ? 'rgba(168,85,247,0.1)' : 'transparent'
+        }}>
+          <span style={{
+            width: '18px', height: '18px', borderRadius: '50%',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '10px', fontWeight: 700, flexShrink: 0,
+            background: agentStep > s.num ? '#4ade80' : agentStep === s.num ? '#a855f7' : 'rgba(255,255,255,0.1)',
+            color: agentStep >= s.num ? '#fff' : '#555'
+          }}>
+            {agentStep > s.num ? '✓' : s.num}
+          </span>
+          <span style={{
+            fontSize: '12px',
+            color: agentStep > s.num ? '#4ade80' : agentStep === s.num ? '#a855f7' : '#555'
+          }}>
+            {s.label}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
         {/* NexaID Verification */}
 <div style={{ marginTop: '1rem' }}>
   {nexaStatus === 'idle' && (
@@ -638,6 +693,54 @@ function App() {
                 borderRadius: '10px', color: '#ef4444', fontSize: '13px', textAlign: 'center'
               }}>
                 ⚠ {tx.urgent}
+                {/* Action Plan */}
+{analysis.action_plan && (
+  <div style={{ marginTop: '14px' }}>
+    <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 10px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+      Action Plan
+    </p>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      {[
+        { label: 'Immediate', value: analysis.action_plan.immediate, color: '#ef4444' },
+        { label: 'This week', value: analysis.action_plan.short_term, color: '#facc15' },
+        { label: 'This month', value: analysis.action_plan.long_term, color: '#4ade80' },
+      ].map((item) => (
+        <div key={item.label} style={{
+          padding: '10px 12px', background: 'rgba(0,0,0,0.2)',
+          borderRadius: '8px', borderLeft: `3px solid ${item.color}`
+        }}>
+          <p style={{ color: item.color, fontSize: '11px', margin: '0 0 4px', fontWeight: 600 }}>
+            {item.label}
+          </p>
+          <p style={{ color: '#d1d5db', fontSize: '12px', margin: 0, lineHeight: 1.5 }}>
+            {item.value}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+
+{/* Anomalies */}
+{analysis.anomalies && analysis.anomalies.length > 0 && analysis.anomalies[0] !== 'No anomalies detected' && (
+  <div style={{ marginTop: '14px' }}>
+    <p style={{ color: '#9ca3af', fontSize: '11px', margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+      Detected Anomalies
+    </p>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+      {analysis.anomalies.map((anomaly, i) => (
+        <div key={i} style={{
+          display: 'flex', gap: '8px', padding: '8px 12px',
+          background: 'rgba(239,68,68,0.05)',
+          border: '1px solid rgba(239,68,68,0.2)', borderRadius: '8px'
+        }}>
+          <span style={{ color: '#ef4444', flexShrink: 0 }}>⚠</span>
+          <span style={{ color: '#d1d5db', fontSize: '12px', lineHeight: 1.5 }}>{anomaly}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
               </div>
             )}
             {/* HSP Settlement */}
