@@ -28,7 +28,7 @@ const riskColor = {
 
 const t = {
   en: {
-    subtitle: 'Your AI-powered risk advisor on HashKey Chain',
+    subtitle: 'AI Risk Guardian for Autonomous DeFi & PayFi on HashKey Chain',
     connect: 'Connect your wallet to get started',
     or: 'or scan any address',
     scan: 'Scan Wallet',
@@ -49,11 +49,11 @@ const t = {
     save: 'Save',
     chatPlaceholder: 'Your Telegram chat ID...',
     connected: 'Connected on HashKey Chain',
-    footer: 'Powered by HashKey Chain · AI by DGrid',
+    footer: 'Powered by HashKey Chain · AI by DGrid · NexaID ZKID · HSP PayFi',
     risk: 'Risk',
   },
   zh: {
-    subtitle: '基于HashKey Chain的AI风险顾问',
+    subtitle: '基于HashKey Chain的AI自主风险守护者',
     connect: '连接钱包开始使用',
     or: '或输入任意地址',
     scan: '扫描钱包',
@@ -74,7 +74,7 @@ const t = {
     save: '保存',
     chatPlaceholder: '你的Telegram Chat ID...',
     connected: '已连接到HashKey Chain',
-    footer: '由HashKey Chain提供支持 · AI by DGrid',
+    footer: '由HashKey Chain提供支持 · AI by DGrid · NexaID ZKID · HSP PayFi',
     risk: '风险',
   },
 }
