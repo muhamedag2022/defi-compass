@@ -11,6 +11,7 @@ import WalletCharts from './components/WalletCharts'
 import { verifyWithNexaID } from './api/nexaid'
 import type { NexaIDAttestation, VerificationStatus } from './api/nexaid'
 import HSPSettlement from './components/HSPSettlement'
+import RiskSimulator from './components/RiskSimulator'
 
 const wallets = [
   { name: 'OKX Wallet', icon: '🟡' },
@@ -743,6 +744,10 @@ function App() {
 )}
               </div>
             )}
+            {/* Risk Simulator */}
+{wallet && analysis && (
+  <RiskSimulator wallet={wallet} analysis={analysis} />
+)}
             {/* HSP Settlement */}
 {wallet && analysis && (
   <HSPSettlement
