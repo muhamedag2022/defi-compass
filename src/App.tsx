@@ -28,7 +28,7 @@ const riskColor = {
 
 const t = {
   en: {
-    subtitle: 'AI Risk Guardian for Autonomous DeFi & PayFi on HashKey Chain',
+    subtitle: 'The AI Risk Layer for Autonomous PayFi on HashKey Chain',
     connect: 'Connect your wallet to get started',
     or: 'or scan any address',
     scan: 'Scan Wallet',
@@ -53,7 +53,7 @@ const t = {
     risk: 'Risk',
   },
   zh: {
-    subtitle: '基于HashKey Chain的AI自主风险守护者',
+    subtitle: 'HashKey Chain自主PayFi的AI风险防护层',
     connect: '连接钱包开始使用',
     or: '或输入任意地址',
     scan: '扫描钱包',

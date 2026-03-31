@@ -1,6 +1,6 @@
 # 🧭 DeFi Compass
 
-> AI Risk Guardian for Autonomous DeFi & PayFi on HashKey Chain | 基于HashKey Chain的AI自主风险守护者
+> The AI Risk Layer for Autonomous PayFi on HashKey Chain | HashKey Chain自主PayFi的AI风险防护层
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-7c3aed?style=for-the-badge)](https://defi-compass.vercel.app)
 [![HashKey Chain](https://img.shields.io/badge/HashKey-Chain-a855f7?style=for-the-badge)](https://hashkey.blockscout.com)
