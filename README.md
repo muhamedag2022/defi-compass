@@ -40,7 +40,7 @@ agent executes a transaction they shouldn't.
 
 ### 1. Dashboard
 <p align="center">
-  <img src="https://i.ibb.co/JW4nS52W/dashboard.png" width="900" alt="Dashboard">
+  <img width="1116" height="1378" alt="Image" src="https://github.com/user-attachments/assets/0654adfd-ea59-459b-9859-f6701c2919d3" />
 </p>
 
 ---
