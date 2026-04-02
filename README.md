@@ -36,31 +36,51 @@ agent executes a transaction they shouldn't.
 
 **Wallet analyzed:** `0x099c9F9aF0213F7D1Db5aeEd2fDe831d653c53e2` on HashKey Chain Mainnet
 
+---
+
 ### 1. Dashboard
-![Dashboard](https://i.ibb.co/JW4nS52W/dashboard.png)
+<p align="center">
+  <img src="https://i.ibb.co/JW4nS52W/dashboard.png" width="900" alt="Dashboard">
+</p>
+
+---
 
 ### 2. Deep Wallet Scan
-![Wallet Scan](https://i.ibb.co/Y7x0W43Z/scan.png)
+<p align="center">
+  <img src="https://i.ibb.co/Y7x0W43Z/scan.png" width="900" alt="Wallet Scan">
+</p>
 
 > Real on-chain data: HSK balance, ERC-20 tokens, transaction history, unique contracts interacted, total value moved.
 
+---
+
 ### 3. Wallet Data + Charts
-![Wallet Data and Charts](https://i.ibb.co/sTVPzsx/charts.png)
+<p align="center">
+  <img src="https://i.ibb.co/sTVPzsx/charts.png" width="900" alt="Wallet Data and Charts">
+</p>
 
 > Portfolio distribution (Pie) + Transaction activity (Bar) — 100% HSK concentration detected immediately.
 
-### 4. Multi-step AI Agent Analysis
-![Portfolio Analysis](https://i.ibb.co/5zxt68B/analysis.png)
+---
 
-> Step 1: Portfolio composition analysis
+### 4. Multi-step AI Agent Analysis
+<p align="center">
+  <img src="https://i.ibb.co/5zxt68B/analysis.png" width="900" alt="Portfolio Analysis">
+</p>
+
+> Step 1: Portfolio composition analysis  
 > Step 2: Anomaly & pattern detection  
 > Step 3: Final risk report generation
 
+---
+
 ### 5. Risk Score + Action Plan + Anomalies
-![Risk Score](https://i.ibb.co/GQ09xwcH/risk.png)
+<p align="center">
+  <img src="https://i.ibb.co/GQ09xwcH/risk.png" width="900" alt="Risk Score">
+</p>
 
 > **Risk Score: 78/100 — HIGH RISK**
-> 
+>
 > AI detected: suspicious drain patterns, dust transactions, 100% asset concentration.
 >
 > Action Plan:
@@ -68,39 +88,60 @@ agent executes a transaction they shouldn't.
 > - **This week:** Rebalance holdings away from single asset
 > - **This month:** Implement multi-signature security
 
+---
+
 ### 6. Risk Simulator — What If?
 
 **Scenario A: HSK drops 20%**
-![HSK drops 20%](https://i.ibb.co/xSXMLPjK/drop20.png)
+<p align="center">
+  <img src="https://i.ibb.co/xSXMLPjK/drop20.png" width="900" alt="HSK drops 20%">
+</p>
 
 **Scenario B: HSK gains 30%**
-![HSK gains 30%](https://i.ibb.co/KckMJsF9/gain30.png)
+<p align="center">
+  <img src="https://i.ibb.co/KckMJsF9/gain30.png" width="900" alt="HSK gains 30%">
+</p>
 
 > Simulate future market scenarios before they happen. See exact impact on balance and risk score.
+
+---
 
 ### 7. NexaID ZKID + HSP PayFi Settlement
 
 **Step 1: NexaID Verification Required**
-![NexaID Required](https://i.ibb.co/rKZG1vzf/nexaid-required.png)
+<p align="center">
+  <img src="https://i.ibb.co/rKZG1vzf/nexaid-required.png" width="900" alt="NexaID Required">
+</p>
 
 **Step 2: Identity Verified via ZK Proof**
-![NexaID Verified](https://i.ibb.co/1Ypncdrx/nexaid-verified.png)
+<p align="center">
+  <img src="https://i.ibb.co/1Ypncdrx/nexaid-verified.png" width="900" alt="NexaID Verified">
+</p>
 
 **Step 3: AI Settlement Plan via HSP MultiPay**
-![HSP Settlement Plan](https://i.ibb.co/5Hbz6Bn/hsp-plan.png)
+<p align="center">
+  <img src="https://i.ibb.co/5Hbz6Bn/hsp-plan.png" width="900" alt="HSP Settlement Plan">
+</p>
 
 **Step 4: Settlement Completed**
-![Settlement Done](https://i.ibb.co/8nNQZ0y4/settlement-done.png)
+<p align="center">
+  <img src="https://i.ibb.co/8nNQZ0y4/settlement-done.png" width="900" alt="Settlement Done">
+</p>
 
-> AI generates MultiPay plan: 50% to HashKey Card, 30% reinvested, 20% liquidity reserve.
+> AI generates MultiPay plan: 50% to HashKey Card, 30% reinvested, 20% liquidity reserve.  
 > One click — batch settlement confirmed via HSP MultiPay.
 
+---
+
 ### 8. Telegram Alerts
-![Telegram Alert 1](https://i.ibb.co/rRQQ5jYT/telegram1.png)
-![Telegram Alert 2](https://i.ibb.co/fbThtYT/telegram2.png)
+<p align="center">
+  <img src="https://i.ibb.co/rRQQ5jYT/telegram1.png" width="900" alt="Telegram Alert 1">
+</p>
+<p align="center">
+  <img src="https://i.ibb.co/fbThtYT/telegram2.png" width="900" alt="Telegram Alert 2">
+</p>
 
 > Real-time alerts sent to user's phone — risk detected + settlement confirmed.
-
 ---
 
 ### 💡 Case Study Summary
