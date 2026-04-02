@@ -46,9 +46,6 @@ agent executes a transaction they shouldn't.
 ---
 
 ### 2. Deep Wallet Scan
-<p align="center">
-  <img width="1048" height="1104" alt="Image" src="https://github.com/user-attachments/assets/8b0130e3-3eb3-4dde-b3e9-3c431ff96ae4" />
-</p>
 
 > Real on-chain data: HSK balance, ERC-20 tokens, transaction history, unique contracts interacted, total value moved.
 
@@ -56,7 +53,7 @@ agent executes a transaction they shouldn't.
 
 ### 3. Wallet Data + Charts
 <p align="center">
-  <img width="1100" height="2682" alt="Image" src="https://github.com/user-attachments/assets/00b1ea3b-a6f9-42b2-a063-314b263c8962" />
+  <img width="1048" height="1104" alt="Image" src="https://github.com/user-attachments/assets/8b0130e3-3eb3-4dde-b3e9-3c431ff96ae4" />
 </p>
 
 > Portfolio distribution (Pie) + Transaction activity (Bar) — 100% HSK concentration detected immediately.
