@@ -823,7 +823,7 @@ function App() {
       GitHub
     </a>
     <span style={{ color: '#333' }}>·</span>
-    <a href="https://www.youtube.com/@mohamedasanhaji1334" target="_blank" rel="noopener noreferrer"
+    <a href="https://youtu.be/Z7ODNasFgFw" target="_blank" rel="noopener noreferrer"
       style={{ color: '#9ca3af', textDecoration: 'none', fontSize: '13px' }}
       onMouseEnter={e => e.currentTarget.style.color = '#a855f7'}
       onMouseLeave={e => e.currentTarget.style.color = '#9ca3af'}>

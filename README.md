@@ -344,7 +344,7 @@ Open `http://localhost:5173`
 ## 📹 Demo
 
 🔗 **Live App:** https://defi-compass.vercel.app
-🎥 **Demo Video:** https://www.youtube.com/@mohamedasanhaji1334
+🎥 **Demo Video:** https://youtu.be/Z7ODNasFgFw
 
 ---
 
