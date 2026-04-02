@@ -47,7 +47,7 @@ agent executes a transaction they shouldn't.
 
 ### 2. Deep Wallet Scan
 <p align="center">
-  <img src="https://i.ibb.co/Y7x0W43Z/scan.png" width="900" alt="Wallet Scan">
+  <img width="1048" height="1104" alt="Image" src="https://github.com/user-attachments/assets/8b0130e3-3eb3-4dde-b3e9-3c431ff96ae4" />
 </p>
 
 > Real on-chain data: HSK balance, ERC-20 tokens, transaction history, unique contracts interacted, total value moved.
@@ -56,7 +56,7 @@ agent executes a transaction they shouldn't.
 
 ### 3. Wallet Data + Charts
 <p align="center">
-  <img src="https://i.ibb.co/sTVPzsx/charts.png" width="900" alt="Wallet Data and Charts">
+  <img width="1100" height="2682" alt="Image" src="https://github.com/user-attachments/assets/00b1ea3b-a6f9-42b2-a063-314b263c8962" />
 </p>
 
 > Portfolio distribution (Pie) + Transaction activity (Bar) — 100% HSK concentration detected immediately.
@@ -64,9 +64,6 @@ agent executes a transaction they shouldn't.
 ---
 
 ### 4. Multi-step AI Agent Analysis
-<p align="center">
-  <img src="https://i.ibb.co/5zxt68B/analysis.png" width="900" alt="Portfolio Analysis">
-</p>
 
 > Step 1: Portfolio composition analysis  
 > Step 2: Anomaly & pattern detection  
@@ -76,7 +73,7 @@ agent executes a transaction they shouldn't.
 
 ### 5. Risk Score + Action Plan + Anomalies
 <p align="center">
-  <img src="https://i.ibb.co/GQ09xwcH/risk.png" width="900" alt="Risk Score">
+  <img width="1086" height="1955" alt="Image" src="https://github.com/user-attachments/assets/5a31542a-8e48-416a-968c-43f7d8a78cf4" />
 </p>
 
 > **Risk Score: 78/100 — HIGH RISK**
@@ -94,12 +91,12 @@ agent executes a transaction they shouldn't.
 
 **Scenario A: HSK drops 20%**
 <p align="center">
-  <img src="https://i.ibb.co/xSXMLPjK/drop20.png" width="900" alt="HSK drops 20%">
+  <img width="952" height="548" alt="Image" src="https://github.com/user-attachments/assets/5558081a-a0cb-486d-8852-0dc052ca9f7b" />
 </p>
 
 **Scenario B: HSK gains 30%**
 <p align="center">
-  <img src="https://i.ibb.co/KckMJsF9/gain30.png" width="900" alt="HSK gains 30%">
+  <img width="1081" height="535" alt="Image" src="https://github.com/user-attachments/assets/d8613913-0421-4f65-a177-af4ceecd1df1" />
 </p>
 
 > Simulate future market scenarios before they happen. See exact impact on balance and risk score.
@@ -110,22 +107,22 @@ agent executes a transaction they shouldn't.
 
 **Step 1: NexaID Verification Required**
 <p align="center">
-  <img src="https://i.ibb.co/rKZG1vzf/nexaid-required.png" width="900" alt="NexaID Required">
+  <img width="1079" height="260" alt="Image" src="https://github.com/user-attachments/assets/d5242894-200c-45f9-9267-581a000156cd" />
 </p>
 
 **Step 2: Identity Verified via ZK Proof**
 <p align="center">
-  <img src="https://i.ibb.co/1Ypncdrx/nexaid-verified.png" width="900" alt="NexaID Verified">
+  <img width="1106" height="333" alt="Image" src="https://github.com/user-attachments/assets/d731412b-9a62-454f-bdd0-0a8ce9865b3e" />
 </p>
 
 **Step 3: AI Settlement Plan via HSP MultiPay**
 <p align="center">
-  <img src="https://i.ibb.co/5Hbz6Bn/hsp-plan.png" width="900" alt="HSP Settlement Plan">
+  <img width="1022" height="589" alt="Image" src="https://github.com/user-attachments/assets/a52612a6-c2ae-40eb-b87e-917bfaaf6dc9" />
 </p>
 
 **Step 4: Settlement Completed**
 <p align="center">
-  <img src="https://i.ibb.co/8nNQZ0y4/settlement-done.png" width="900" alt="Settlement Done">
+  <img width="1081" height="438" alt="Image" src="https://github.com/user-attachments/assets/1641678d-9924-4449-8ee7-bc73c388ba0a" />
 </p>
 
 > AI generates MultiPay plan: 50% to HashKey Card, 30% reinvested, 20% liquidity reserve.  
@@ -135,10 +132,10 @@ agent executes a transaction they shouldn't.
 
 ### 8. Telegram Alerts
 <p align="center">
-  <img src="https://i.ibb.co/rRQQ5jYT/telegram1.png" width="900" alt="Telegram Alert 1">
+  <img width="1078" height="172" alt="Image" src="https://github.com/user-attachments/assets/af5204c4-e938-4dba-933a-1b2951f98d4e" />
 </p>
 <p align="center">
-  <img src="https://i.ibb.co/fbThtYT/telegram2.png" width="900" alt="Telegram Alert 2">
+  <img width="1040" height="695" alt="Image" src="https://github.com/user-attachments/assets/a034e83d-a87c-4906-9b1b-3bbf8c0e8783" />
 </p>
 
 > Real-time alerts sent to user's phone — risk detected + settlement confirmed.
